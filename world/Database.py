@@ -10,6 +10,7 @@ class Database(object):
     """
 
     def __init__(self, config):
+
         engine = create_engine("mysql+mysqlconnector://{}:{}@{}/{}".format(
             config["database"]["user"],
             config["database"]["password"],

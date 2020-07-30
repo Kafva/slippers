@@ -1,0 +1,15 @@
+{
+  "world":{
+    "1":{
+      "host": "clubpenguin.com",
+      "port": 843,
+      "maxUsers": 100
+    }
+  },
+  "database":{
+    "user": "maria",
+    "password": "",
+    "host": "db",
+    "database": "slippers"
+  }
+}

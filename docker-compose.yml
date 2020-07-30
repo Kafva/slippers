@@ -1,0 +1,37 @@
+# When deploying with docker-compose up both services will be added to the 
+# default network. The database connection will utilise the
+# "domain name" of the db service which for this YAML file will be 'db'
+
+version: '3'
+services:
+  db:
+    image: mariadb
+    hostname: db
+   
+    # Note that we don't need to expose port 3306 since all requests to the
+    # database will be done over the 'docker' network
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    
+    # Mount the databaseInit and mysqldump SQL scripts to restore
+    # and initialse the database on startup 
+    volumes:
+    - ./db/databaseInit.sql:/docker-entrypoint-initdb.d/dummy1.sql
+    - ./db/mysqldump.sql:/docker-entrypoint-initdb.d/dummy2.sql
+    
+  web:
+    # Remeber to build the image anew for changes to take affect
+    image: slippers
+    hostname: slippers
+
+    # Set clubpenguin.com to localhost (essential for chat506.swf which contacts this address)
+    extra_hosts:
+      - "clubpenguin.com:0.0.0.0"
+
+    command: bash -c "service nginx start && service php7.3-fpm start && python3 World.py 1 >> world1.log"
+
+    ports:
+      - 80:80
+      - 843:843
+    depends_on:
+      - db

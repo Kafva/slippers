@@ -1,0 +1,6 @@
+{
+  "name":"Get",
+  "events": {
+    "gi":"get_inventory"
+  }
+}

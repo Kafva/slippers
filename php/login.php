@@ -1,6 +1,6 @@
 <?php
     // Create connection
-    $db  = new mysqli("127.0.0.1", "root", "password", "slippers");
+    $db  = new mysqli("db", "maria", "", "slippers");
     // Check connection
     if ($db->connect_error) {
         die("&e=0");
@@ -16,7 +16,9 @@
     }
 
     // Authenticate login
-    if (password_verify($_POST["Password"], $user["password"])) { // If the password is correct
+    if (password_verify($_POST["Password"], $user["password"])) 
+    // If the password is correct
+    { 
         // Formats item array
         $items = explode(",", $user["items"]);
         $items = str_replace(array("[", "]", "\"", " "), "", $items);

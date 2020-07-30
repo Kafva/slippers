@@ -1,0 +1,7 @@
+.git*
+README*
+venv
+*.sql
+*.bash
+testing
+*.flm

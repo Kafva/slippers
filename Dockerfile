@@ -26,7 +26,7 @@ RUN cp config/nginxDefault.conf /etc/nginx/sites-available/default
 RUN cp -r Client07/ /var/www/slippers
 RUN mv client/login.php /var/www/slippers/php
 RUN mv client/index.html /var/www/slippers/
-RUN mv client/favicon.png /var/www/slippers/media
+RUN [ -f client/favicon.png ] && mv client/favicon.png /var/www/slippers/media
 
 EXPOSE 80
 EXPOSE 843

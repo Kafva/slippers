@@ -2,7 +2,7 @@
 # For changs to the database to persist use this script instead of calling `docker-compose down` directly
 
 dump_db=slippers
-dump_path=/home/mysqldump.sql
+dump_path=/mysqldump.sql
 db_name=mariadb
 container_id=$(docker ps | awk "/$db_name/{print \$1}")
 

@@ -15,10 +15,12 @@ services:
     
     # Mount the databaseInit and mysqldump SQL scripts to restore
     # and initialse the database on startup 
+    # NOTE that the scripts under /docker-entrypoint-initdb.d/ are only ran 
+    # when no previous mariadb container exists
     volumes:
     - ./db/databaseInit.sql:/docker-entrypoint-initdb.d/dummy1.sql
     - ./db/mysqldump.sql:/docker-entrypoint-initdb.d/dummy2.sql
-    
+   
   web:
     # Remeber to build the image anew for changes to take affect
     image: slippers

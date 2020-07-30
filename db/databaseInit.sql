@@ -46,8 +46,16 @@ CREATE TABLE IF NOT EXISTS slippers.`inventory`
 
 -- DEFAULT USER:
 -- bcrypt.hashpw(b"xDDD",bcrypt.gensalt(14))
+INSERT IGNORE INTO slippers.`users` (`id`, `username`, `password`, `loginKey`, `rank`, `banned`, `coins`, `buddies`, `head`, `face`, `neck`, `body`, `hand`, `feet`, `color`, `photo`, `flag`) 
+VALUES (1, 'Zzz', '$2b$14$FefGa9CH.AuaUsxGtNHYaO1ByTdOZ2Cx/OMAwXNhs6yCT9UjEHv22', 'SeMBxfklcAQ3MTX', 2, 0, 10000, '[]', 0, 0, 0, 0, 0, 0, 4, 0, 0);
 
 INSERT IGNORE INTO slippers.`users` (`id`, `username`, `password`, `loginKey`, `rank`, `banned`, `coins`, `buddies`, `head`, `face`, `neck`, `body`, `hand`, `feet`, `color`, `photo`, `flag`) 
-VALUES (1, 'Cyan', '$2b$14$FefGa9CH.AuaUsxGtNHYaO1ByTdOZ2Cx/OMAwXNhs6yCT9UjEHv22', 'SeMBxfklcAQ3MTX', 2, 0, 10000, '[]', 0, 0, 0, 0, 0, 0, 4, 0, 0);
+VALUES (2, 'Blue', '$2b$14$FefGa9CH.AuaUsxGtNHYaO1ByTdOZ2Cx/OMAwXNhs6yCT9UjEHv22', 'SeMBxfklcAQ3MTX', 2, 0, 10000, '[]', 0, 0, 0, 0, 0, 0, 1, 0, 0);
+
+INSERT IGNORE INTO slippers.`users` (`id`, `username`, `password`, `loginKey`, `rank`, `banned`, `coins`, `buddies`, `head`, `face`, `neck`, `body`, `hand`, `feet`, `color`, `photo`, `flag`) 
+VALUES (3, 'Cyan', '$2b$14$FefGa9CH.AuaUsxGtNHYaO1ByTdOZ2Cx/OMAwXNhs6yCT9UjEHv22', 'SeMBxfklcAQ3MTX', 2, 0, 10000, '[]', 0, 0, 0, 0, 0, 0, 12, 0, 0);
+
+INSERT IGNORE INTO slippers.`users` (`id`, `username`, `password`, `loginKey`, `rank`, `banned`, `coins`, `buddies`, `head`, `face`, `neck`, `body`, `hand`, `feet`, `color`, `photo`, `flag`) 
+VALUES (4, 'Red', '$2b$14$FefGa9CH.AuaUsxGtNHYaO1ByTdOZ2Cx/OMAwXNhs6yCT9UjEHv22', 'SeMBxfklcAQ3MTX', 2, 0, 10000, '[]', 0, 0, 0, 0, 0, 0, 5, 0, 0);
 
 COMMIT;

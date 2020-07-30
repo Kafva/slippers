@@ -24,7 +24,9 @@ RUN pip install -r requirements.txt
 # Enable the supplied default nginx config and copy all the client resources to the served directory
 RUN cp config/nginxDefault.conf /etc/nginx/sites-available/default
 RUN cp -r Client07/ /var/www/slippers
-RUN mv php/login.php /var/www/slippers/php
+RUN mv client/login.php /var/www/slippers/php
+RUN mv client/index.html /var/www/slippers/
+RUN mv client/favicon.png /var/www/slippers/media
 
 EXPOSE 80
 EXPOSE 843

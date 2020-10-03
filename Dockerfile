@@ -1,5 +1,9 @@
 FROM python:3.8-slim-buster
 
+### -----------------------------
+### Make sure that the Client07/ directory and client/favicon.png exist ###
+### -----------------------------
+
 # Set the working directory inside the container
 WORKDIR /home/slippers
 
@@ -14,7 +18,7 @@ RUN python3 -m venv $VIRTUAL_ENV
 # Update the PATH to effectivly `activate` the virtual enviroment by placing the python binary first 
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-RUN apt-get update && apt-get upgrade && apt-get install nginx php php-fpm php-mysql -y
+RUN apt-get update -y && apt-get upgrade -y && apt-get install nginx php php-fpm php-mysql -y
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt

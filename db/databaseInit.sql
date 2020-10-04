@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS slippers.`inventory`
 );
 
 
--- DEFAULT USER:
+-- DEFAULT USERS:
 -- bcrypt.hashpw(b"xDDD",bcrypt.gensalt(14))
 INSERT IGNORE INTO slippers.`users` (`id`, `username`, `password`, `loginKey`, `rank`, `banned`, `coins`, `buddies`, `head`, `face`, `neck`, `body`, `hand`, `feet`, `color`, `photo`, `flag`) 
 VALUES (1, 'Zzz', '$2b$14$FefGa9CH.AuaUsxGtNHYaO1ByTdOZ2Cx/OMAwXNhs6yCT9UjEHv22', 'SeMBxfklcAQ3MTX', 2, 0, 10000, '[]', 0, 0, 0, 0, 0, 0, 4, 0, 0);

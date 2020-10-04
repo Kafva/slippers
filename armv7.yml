@@ -1,0 +1,35 @@
+# To deploy on ARMv7 a different mariadb image is needed, this image doesn't support /docker-entrypoint scripts
+# and therefore a very hacky command is used to initalise/restore the database
+version: '3'
+services:
+  db:
+    image: linuxserver/mariadb
+    hostname: db
+   
+    # Note that we don't need to expose port 3306 since all requests to the
+    # database will be done over the 'docker' network
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    
+    volumes:
+    - ./db/databaseInit.sql:/dummy1.sql
+    - ./db/mysqldump.sql:/dummy2.sql
+
+    command: bash -c "sleep 20 ; mysql < /dummy1.sql ; mysql < /dummy2.sql ; tail -f /dev/null"
+
+  web:
+    # Remeber to build the image anew for changes to take affect
+    image: slippers
+    hostname: slippers
+
+    # Set clubpenguin.com to localhost (essential for chat506.swf which contacts this address)
+    extra_hosts:
+      - "clubpenguin.com:0.0.0.0"
+
+    command: bash -c "service nginx start && service php7.3-fpm start && python3 World.py 1 >> world1.log"
+
+    ports:
+      - 80:80
+      - 843:843
+    depends_on:
+      - db

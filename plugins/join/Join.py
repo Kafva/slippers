@@ -43,7 +43,7 @@ class Join(Plugin):
         user.x = "0"
         user.y = "0"
         user.frame = "0"
-
+        print("Joining player: {}".format(user))
         self.add(user)
 
     # Functions
@@ -52,6 +52,7 @@ class Join(Plugin):
         """Adds a player in to their new room."""
         int_id = user.get_int_id(self.rooms)
         self.rooms[user.room]["users"].append(user)
+        print("Add player to room: {}".format(user))
 
         # Games
         if self.rooms[user.room]["isGame"] == "true":

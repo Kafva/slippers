@@ -32,7 +32,7 @@ class Login(Plugin):
         online = {user.data.username.lower(): user for user in self.users if user.data}
 
         if nick.lower() in online:
-            print(online[nick])
+            print_flush(online[nick])
             online[nick].send(["e", "-1", "1"])
             online[nick].transport.close()
 

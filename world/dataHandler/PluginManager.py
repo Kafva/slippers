@@ -38,7 +38,7 @@ class PluginManager(object):
                 # Loads plugin events
                 self.load_events(plugin_object, plugin_config["events"])
 
-        print("[PluginManager] {} plugins loaded".format(count))
+        print_flush("[PluginManager] {} plugins loaded".format(count))
 
     def load_events(self, plugin, events):
         """Loads plugin events into self.events."""
@@ -50,6 +50,6 @@ class PluginManager(object):
         try:
             self.events[event](data, user)
         except KeyError:
-            print("[PluginManager] Event not handled: {} {}".format(event, data))
+            print_flush("[PluginManager] Event not handled: {} {}".format(event, data))
         except Exception as e:
-            print("[PluginManager] Error handling event: {} {}\nError: {}".format(event, data, e))
+            print_flush("[PluginManager] Error handling event: {} {}\nError: {}".format(event, data, e))

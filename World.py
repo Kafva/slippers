@@ -5,6 +5,10 @@ from Server import Server
 from world.DataHandler import DataHandler
 from world.Database import Database
 
+def print_flush(_str):
+    # For stdout redirection logging to work we need to flush stdout
+    print(_str, flush=True)
+
 
 class World(Server):
     """
@@ -12,7 +16,7 @@ class World(Server):
     """
 
     def __init__(self, world_id, config):
-        print("[World] Starting world {}".format(world_id))
+        print_flush("[World] Starting world {}".format(world_id))
 
         self.users = []
         self.db = Database(config)

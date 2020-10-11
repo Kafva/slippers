@@ -18,7 +18,7 @@ RUN python3 -m venv $VIRTUAL_ENV
 # Update the PATH to effectivly `activate` the virtual enviroment by placing the python binary first 
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# `mysql-client` and `net-tools` are only installed for debug purposes
+# `mysql-client`, `vim` and `net-tools` are only installed for debug purposes
 RUN apt-get update -y && apt-get upgrade -y && apt-get install default-mysql-client net-tools nginx php php-fpm php-mysql -y
 
 RUN pip install --upgrade pip

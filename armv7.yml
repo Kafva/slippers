@@ -1,5 +1,8 @@
 # To deploy on ARMv7 a different mariadb image is needed, this image doesn't support /docker-entrypoint scripts
 # and therefore a very hacky command is used to initalise/restore the database
+
+# db connection from slippers is fine, is the problem with the :843 port?
+
 version: '3'
 services:
   db:

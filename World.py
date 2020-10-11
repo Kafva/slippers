@@ -5,18 +5,13 @@ from Server import Server
 from world.DataHandler import DataHandler
 from world.Database import Database
 
-def print_flush(_str):
-    # For stdout redirection logging to work we need to flush stdout
-    print(_str, flush=True)
-
-
 class World(Server):
     """
     Creates a Club Penguin game world.
     """
 
     def __init__(self, world_id, config):
-        print_flush("[World] Starting world {}".format(world_id))
+        print("[World] Starting world {}".format(world_id),flush=True)
 
         self.users = []
         self.db = Database(config)

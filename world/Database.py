@@ -28,7 +28,7 @@ class Database(object):
         # Test the connection
         try:
             self.session.execute("select 1")
-            print_flush("[Database] Connection successful")
+            print("[Database] Connection successful", flush=True)
         except Exception as e:
-            print_flush("[Database] Could not connect to MySQL database")
-            print_flush(str(e))
+            print("[Database] Could not connect to MySQL database",flush=True)
+            print(str(e),flush=True)

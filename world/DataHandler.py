@@ -32,7 +32,7 @@ class DataHandler(object):
         Handles incoming XML and XT packets.
         """
         for data in filter(None, data.rstrip().split("\x00")):
-            print_flush(data)
+            print(data,flush=True)
 
             if data == "<policy-file-request/>":
                 user.send(self.POLICY)
@@ -43,7 +43,7 @@ class DataHandler(object):
                     parsed = xmltodict.parse(data, dict_constructor=dict)
                     self.fire_event(parsed["msg"]["body"]["@action"], parsed, user)
                 except Exception:
-                    print_flush("[DataHandler] Bad XML: {}".format(data))
+                    print("[DataHandler] Bad XML: {}".format(data),flush=True)
 
             # Handling XT
             elif data.startswith("%xt%"):
@@ -51,7 +51,7 @@ class DataHandler(object):
                     parsed = self.packet.parse(data)
                     self.fire_event(parsed["action"], parsed, user)
                 except Exception:
-                    print_flush("[DataHandler] Bad XT: {}".format(data))
+                    print("[DataHandler] Bad XT: {}".format(data),flush=True)
 
     def fire_event(self, event, data, user):
         """Fires events to plugins."""

@@ -30,7 +30,7 @@ services:
     extra_hosts:
       - "clubpenguin.com:0.0.0.0"
 
-    command: bash -c "service nginx start && service php7.3-fpm start && python3 World.py 1 >> world1.log"
+    command: bash -c "service nginx start && service php7.3-fpm start && python3 World.py 1 > world.log"
 
     ports:
       - 80:80

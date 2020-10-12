@@ -1,24 +1,35 @@
 # To deploy on ARMv7 a different mariadb image is needed, this image doesn't support /docker-entrypoint scripts
 # and therefore a very hacky command is used to initalise/restore the database
 
-# db connection from slippers is fine, is the problem with the :843 port?
+# https://github.com/BurdaMagazinOrg/update-tester/issues/2
+# Error: This session is in 'prepared' state; no further SQL can be emitted within this transaction.
+
+# MySQL will resolve localhost to a unix socket, use -h 127.0.0.1 to bypass
+# ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 "No such file or directory")
+
+# beercan1989/arm-mysql: Doesn't support -- comments
+# linuxserver/mariadb: Session error after ~10 mins
+# hypriot/rpi-mysql: Version to low to support neccessary functions
+# biarms/mysql: ^
 
 version: '3'
 services:
   db:
-    image: linuxserver/mariadb
+    image: 459below/mariadb-armv7
     hostname: db
-   
+
     # Note that we don't need to expose port 3306 since all requests to the
     # database will be done over the 'docker' network
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-    
-    volumes:
-    - ./db/databaseInit.sql:/dummy1.sql
-    - ./db/mysqldump.sql:/dummy2.sql
+      MYSQL_USER: 'maria'
+      MYSQL_PASSWORD: ''
+      MYSQL_DATABASE: 'slippers'
+      SERVICE_NAME: 'mysql'
 
-    command: bash -c "sleep 20 ; mysql < /dummy1.sql ; mysql < /dummy2.sql ; tail -f /dev/null"
+    volumes:
+    - ./db/databaseInit.sql:/docker-entrypoint-initdb.d/dummy1.sql
+    - ./db/mysqldump.sql:/docker-entrypoint-initdb.d/dummy2.sql
 
   web:
     # Remeber to build the image anew for changes to take affect

@@ -8,7 +8,7 @@ Clone the repository and download the [2007 media files](https://drive.google.co
 	docker build --rm . --tag=slippers
 ```
 
-and launch the server with `docker-compose up [-d]`. To deploy on ARMv7 use `armv7.yml` as the input file for `docker-compose`.
+and launch the server with `docker-compose up [-d]`.
 
 ## Notes on modifying SWF files
 Each .swf file can be decompiled to assembly-like code with `flasm -d game.swf > game.flm` and recompiled with `flasm -a game.flm`. Note that the original `.swf` file needs to be kept since each `.flm` file is pure text and doesn't contain the media resources of the original `.swf`. An original copy of the unpatched `.swf` file will be kept with the name `game.$wf` after applying a patch with `flasm`. For the 2007 media files to work with the current setup some modifications to `chat506.swf` are required. 

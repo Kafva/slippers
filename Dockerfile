@@ -45,7 +45,7 @@ RUN mv client/index.html /var/www/slippers/
 RUN [ -f client/favicon.png ] && mv client/favicon.png /var/www/slippers/media
 
 #### Nitrome ####
-RUN if [ "$nitrome" = 1 ]; then ./Nitrome/setup.bash ; fi
+RUN if [ "$nitrome" = 1 ]; then ./scripts/setup.bash ; fi
 
 EXPOSE 80
 EXPOSE 843

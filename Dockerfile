@@ -34,8 +34,8 @@ RUN pip install -r requirements.txt
 
 #### (slippers) NGINX + PHP ####
 # Enable the supplied default nginx config and copy all the client resources to the served directory
-RUN cp config/clubpenguin.conf /etc/nginx/sites-available/clubpenguin.com
-RUN ln -s /etc/nginx/sites-available/clubpenguin.com /etc/nginx/sites-enabled/clubpenguin.com
+RUN cp config/clubpenguin.conf /etc/nginx/sites-available/default
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # Client files
 RUN cp -r Client07/ /var/www/slippers

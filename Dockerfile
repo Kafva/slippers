@@ -35,7 +35,7 @@ RUN pip install -r requirements.txt
 #### (slippers) NGINX + PHP ####
 # Enable the supplied default nginx config and copy all the client resources to the served directory
 RUN cp config/clubpenguin.conf /etc/nginx/sites-available/default
-RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # Client files
 RUN cp -r Client07/ /var/www/slippers
@@ -49,6 +49,3 @@ RUN if [ "$nitrome" = 1 ]; then ./scripts/nitrome.bash ; fi
 
 EXPOSE 80
 EXPOSE 843
-
-# Wait forever (debug)
-#CMD tail -f /dev/null

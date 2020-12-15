@@ -1,0 +1,13 @@
+[Unit]
+Description=Slippers web service
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/slippers
+ExecStart=/usr/bin/docker-compose up
+ExecStop=/opt/slippers/scripts/quit.bash
+
+[Install]
+WantedBy=multi-user.target

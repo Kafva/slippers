@@ -8,7 +8,7 @@ if ( $container_id )
 {
     # Dump the content of the database and copy it to the host
     docker exec -it $container_id /bin/bash -c "mysqldump --databases $dump_db > $dump_path"
-    docker cp "${container_id}:${dump_path}" ./db/mysqldump.sql
+    docker cp "${container_id}:${dump_path}" ../db/mysqldump.sql
     docker-compose down
 }
 else

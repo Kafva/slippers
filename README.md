@@ -5,7 +5,7 @@ A rudimentary CPPS backend deployable with `docker-compose`. To retain changes t
 Clone the repository and download the [2007 media files](https://drive.google.com/drive/folders/1_KGsO7RlQGr5YhJO0RAbvbaUsIJj_taT) into a directory named *Client07* inside the root of the repository. Note that it may be necessary to patch one of the `.swf` files before continuing (details in next section). Build the docker image with
 
 ```
-	docker build --rm . --tag=slippers
+docker build --rm . --tag=slippers
 ```
 
 and launch the server with `docker-compose up [-d]`. The build option `--build-arg nitrome=1` is not relevant for the CPPS setup.
